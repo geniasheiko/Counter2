@@ -20,6 +20,15 @@ export const Counter = () => {
             setCount(Number(savedMin)); // count в min
         }
     }, []);
+    //что бы менять значение в LS
+    useEffect(() => {
+        const savedMin = localStorage.getItem("min");
+        const savedMax = localStorage.getItem("max");
+        if (savedMin && savedMax) {
+            setMin(Number(savedMin));
+            setMax(Number(savedMax));
+        }
+    }, [localStorage.getItem("min"), localStorage.getItem("max")]);
 
 
     const inc = () => {
@@ -36,10 +45,10 @@ export const Counter = () => {
             <h1>{count}</h1>
             <Button onClick={inc}
             title={"inc"}
-            disable={count >= 5}/>
+            disable={count >= max}/>
                 <Button onClick={reset}
             title={"res"}
-            disable={count === 0}/>
+            disable={count === min}/>
                 <Button onClick={()=>settings("/components/Settings")}
             title={"settings"}
            />

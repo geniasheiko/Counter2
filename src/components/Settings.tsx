@@ -3,7 +3,7 @@ import { Button } from "./Button";
 import { useNavigate } from "react-router-dom";
 
 
-export const Settins = () => {
+export const Settings = () => {
     const [count, setCount] = useState<number>(0);
     const [min, setMin] = useState<number>(0);
     const [max, setMax] = useState<number>(0);
